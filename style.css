@@ -18,7 +18,7 @@ body {
   font-family: "Noto Sans SC", system-ui, sans-serif;
   transition: color .3s ease, background .3s ease;
 }
-body.dark {
+html[data-theme="dark"] {
   --bg: #151513;
   --ink: #f3efe6;
   --muted: #aaa69c;
@@ -31,8 +31,11 @@ button { font: inherit; }
 ::selection { color: #111; background: var(--acid); }
 .grain {
   position: fixed; inset: 0; z-index: 10; pointer-events: none; opacity: .035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+  background-image: repeating-radial-gradient(circle at 20% 30%, currentColor 0 .45px, transparent .7px 4px);
+  background-size: 7px 7px;
 }
+.skip-link { position: fixed; left: 16px; top: -60px; z-index: 20; padding: 10px 14px; color: #111; background: var(--acid); text-decoration: none; transition: top .2s; }
+.skip-link:focus { top: 12px; }
 .section-shell { width: min(calc(100% - 48px), var(--max)); margin-inline: auto; }
 
 .site-header {
@@ -46,6 +49,7 @@ button { font: inherit; }
 .nav a { position: relative; font-size: .82rem; text-decoration: none; }
 .nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -5px; height: 1px; background: var(--ink); transition: right .2s; }
 .nav a:hover::after { right: 0; }
+.nav a.active::after { right: 0; }
 .theme-toggle { width: 40px; height: 40px; margin-left: 30px; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); background: transparent; cursor: pointer; }
 
 .hero { min-height: calc(100vh - 82px); position: relative; display: flex; flex-direction: column; justify-content: center; padding-block: 70px; }
@@ -115,8 +119,10 @@ button { font: inherit; }
 .site-footer p span { color: var(--accent); }
 .site-footer a { text-decoration: none; }
 
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.visible { opacity: 1; transform: none; }
+.reveal { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.js .reveal.visible { opacity: 1; transform: none; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
