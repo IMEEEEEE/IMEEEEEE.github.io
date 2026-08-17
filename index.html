@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yi Liu 的个人主页——记录创意、作品与正在探索的事。">
+  <meta name="theme-color" content="#f4f0e8">
+  <title>Yi Liu — 个人主页</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="Script.js" defer></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="回到首页">YL<span>.</span></a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#work">作品</a>
+      <a href="#about">关于</a>
+      <a href="#contact">联系</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="切换深浅色" title="切换深浅色">
+      <span aria-hidden="true">◐</span>
+    </button>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <p class="eyebrow"><span class="status-dot"></span> OPEN TO NEW IDEAS · 2026</p>
+      <h1>你好，我是<br><span>Yi Liu。</span></h1>
+      <div class="hero-bottom">
+        <p class="hero-copy">我把好奇心变成作品。这里收集我的创意、实验，以及一路上学到的东西。</p>
+        <a class="round-link" href="#work" aria-label="查看我的作品">向下<br>探索 <span>↘</span></a>
+      </div>
+      <p class="side-note" aria-hidden="true">BASED ON EARTH · CREATING EVERYWHERE</p>
+    </section>
+
+    <section class="marquee" aria-label="我关注的领域">
+      <div class="marquee-track">
+        <span>DESIGN</span><i>✦</i><span>TECHNOLOGY</span><i>✦</i><span>STORYTELLING</span><i>✦</i>
+        <span>DESIGN</span><i>✦</i><span>TECHNOLOGY</span><i>✦</i><span>STORYTELLING</span><i>✦</i>
+      </div>
+    </section>
+
+    <section class="work section-shell" id="work">
+      <div class="section-heading reveal">
+        <p class="section-number">01 / SELECTED WORK</p>
+        <h2>近期作品</h2>
+        <p>一些值得被看见的探索。把这里替换成你自己的项目，就能让主页真正属于你。</p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project project-featured reveal">
+          <div class="project-visual visual-one" aria-hidden="true">
+            <span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><b>01</b>
+          </div>
+          <div class="project-info">
+            <p>个人项目 · 2026</p>
+            <h3>创意实验室</h3>
+            <span>一处收集灵感、原型与未完成想法的数字空间。</span>
+            <a href="#contact" aria-label="了解创意实验室">查看项目 ↗</a>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project-visual visual-two" aria-hidden="true">
+            <div class="poster"><small>VISUAL</small><strong>02</strong><em>STUDIES</em></div>
+          </div>
+          <div class="project-info">
+            <p>视觉设计 · 2026</p>
+            <h3>视觉习作</h3>
+            <span>关于色彩、文字和构图的一系列小型练习。</span>
+            <a href="#contact" aria-label="了解视觉习作">查看项目 ↗</a>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project-visual visual-three" aria-hidden="true">
+            <div class="code-card"><span>hello_world.js</span><code>const idea = curiosity<br> &nbsp;+ time + courage;</code></div>
+          </div>
+          <div class="project-info">
+            <p>代码实验 · 2026</p>
+            <h3>小而有趣</h3>
+            <span>用代码解决日常问题，也创造一点意料之外的乐趣。</span>
+            <a href="#contact" aria-label="了解代码实验">查看项目 ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="about section-shell" id="about">
+      <div class="section-heading reveal">
+        <p class="section-number">02 / ABOUT</p>
+        <h2>关于我</h2>
+      </div>
+      <div class="about-grid">
+        <p class="about-lead reveal">我相信，好的作品既要解决问题，也要让人感到一点惊喜。</p>
+        <div class="about-copy reveal">
+          <p>我喜欢在设计、技术和叙事的交叉处工作，把模糊的想法慢慢变成清晰、好用、有温度的体验。</p>
+          <p>不在电脑前的时候，我大概正在观察生活、记录灵感，或学习一件完全陌生的新事物。</p>
+          <div class="interests">
+            <span>视觉设计</span><span>前端开发</span><span>创意编码</span><span>摄影</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact section-shell" id="contact">
+      <p class="section-number reveal">03 / CONTACT</p>
+      <div class="contact-inner reveal">
+        <p>有个想法？</p>
+        <h2>一起聊聊。</h2>
+        <a class="email-link" href="mailto:hello@example.com">hello@example.com <span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <p>© <span id="year">2026</span> YI LIU</p>
+    <p>用好奇心制作 <span aria-hidden="true">♥</span></p>
+    <a href="#top">返回顶部 ↑</a>
+  </footer>
+</body>
+</html>
