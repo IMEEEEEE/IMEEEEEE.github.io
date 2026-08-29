@@ -1,75 +1,1119 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Yi Liu 的创意主页——实验、模型、音乐和生活片段。">
-  <meta name="theme-color" content="#fff8e8">
-  <title>Yi Liu — Welcome to my little world</title>
+  <meta name="description" content="Yi Liu — mechanical engineering Ph.D. candidate building embedded and AI-driven cyber-physical systems.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#c9c9c9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141817" media="(prefers-color-scheme: dark)">
+  <title>Yi Liu — Mechanical Engineering & Embedded AI</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Nunito:wght@600;700;800;900&family=Noto+Sans+SC:wght@500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="Script.js" defer></script>
+  <link rel="preload" href="assets/Crack/concrete-plaster-mask.png" as="image">
+  <link rel="preload" href="assets/Crack/crack-reference-mask.png" as="image">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Secular+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css?v=20260829-475">
+  <script src="assets/vendor/three.min.js"></script>
+  <script src="assets/Music/music-library.js?v=20260828-011"></script>
+  <script src="assets/Music/music-envelopes.js?v=20260828-003"></script>
+  <script src="index.js?v=20260829-266" defer></script>
 </head>
-<body class="home-page">
-  <a class="skip-link" href="#main">跳到主要内容</a>
-  <header class="topbar wrap">
-    <a class="brand" href="index.html"><span>YI</span> LIU</a>
-    <p class="tiny-note">A PLAYGROUND FOR IDEAS <span aria-hidden="true">✦</span></p>
-    <a class="say-hi" href="mailto:hello@example.com">SAY HI! <span>↗</span></a>
-  </header>
+<body data-section="profile">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <main id="main">
-    <section class="home-hero wrap">
-      <div class="hero-copy">
-        <p class="kicker"><span></span> HELLO, NICE TO MEET YOU</p>
-        <h1>I make small things<br>with <em>big curiosity.</em></h1>
-        <p class="intro">你好，我是 Yi。这里不是一份严肃的简历，而是我放实验、模型、音乐和生活碎片的小小宇宙。</p>
+  <main class="portfolio" id="main">
+    <aside class="identity-panel">
+      <div class="contact" aria-label="Contact links">
+        <a href="https://www.linkedin.com/in/yi-liu-uvm/" target="_blank" rel="noopener noreferrer" aria-label="Yi Liu on LinkedIn">
+          <img src="assets/Logo/Linkedin.png" alt="" draggable="false">
+        </a>
+        <a href="mailto:yliu1@uvm.edu" aria-label="Email Yi Liu">
+          <img src="assets/Logo/Mail.png" alt="" draggable="false">
+        </a>
       </div>
-      <div class="hero-doodle" aria-hidden="true">
-        <div class="sun">HELLO!</div>
-        <div class="face"><i></i><i></i><b></b></div>
-        <div class="spark">✦</div>
-        <div class="scribble">make<br>something<br>fun!</div>
-      </div>
-    </section>
+      <div class="identity-content">
+        <h1><span class="greeting">Hi, I’m</span><span class="name">Yi Liu</span></h1>
+        <p class="role">Ph.D. candidate in mechanical engineering building embedded, AI-driven systems that sense and respond in real time.</p>
 
-    <section class="worlds wrap" aria-labelledby="worlds-title">
-      <div class="worlds-heading">
-        <p class="section-tag">CHOOSE A DOOR ↓</p>
-        <h2 id="worlds-title">Explore my worlds</h2>
-        <p>每个板块都是一间独立的小房间。随便逛逛，不用按顺序。</p>
+        <div class="page-nav-stack">
+          <nav class="page-nav active" data-page-nav="profile" aria-label="On the Profile page">
+            <a class="active" href="#profile-overview"><span class="nav-index">00</span><span class="nav-label">About me</span></a>
+            <a href="#profile-experience"><span class="nav-index">01</span><span class="nav-label">Experience</span></a>
+            <a href="#profile-background"><span class="nav-index">02</span><span class="nav-label">Education</span></a>
+            <a href="#profile-skills"><span class="nav-index">03</span><span class="nav-label">Skills</span></a>
+            <a href="#profile-publications"><span class="nav-index">04</span><span class="nav-label">Publications</span></a>
+          </nav>
+          <nav class="page-nav" data-page-nav="research" aria-label="On the Research page" hidden>
+            <a class="active" href="#research-overview"><span class="nav-index">00</span><span class="nav-label">Overview</span></a>
+            <a href="#research-thermal"><span class="nav-index">01</span><span class="nav-label">Thermal intelligence</span></a>
+            <a href="#research-robotics"><span class="nav-index">02</span><span class="nav-label">Robotic infrastructure monitoring</span></a>
+            <a href="#research-acoustic"><span class="nav-index">03</span><span class="nav-label">Acoustic imaging</span></a>
+          </nav>
+          <nav class="page-nav" data-page-nav="lab" aria-label="On the Lab page" hidden>
+            <a class="active" href="#lab-workbench"><span class="nav-index">00</span><span class="nav-label">Workbench</span></a>
+            <a href="#lab-locallink"><span class="nav-index">01</span><span class="nav-label">LocalLink</span></a>
+            <a href="#lab-model-making"><span class="nav-index">02</span><span class="nav-label">Model Making</span></a>
+          </nav>
+          <nav class="page-nav" data-page-nav="music" aria-label="On the Music page" hidden>
+            <a class="active" href="#music-overview" aria-label="Composer, Pianist, and Singer"><span class="nav-index" aria-hidden="true">&#9833;</span><span class="nav-label">Composer, Pianist, and Singer</span></a>
+            <a href="#music-reworks" aria-label="Drumbeat and Melody"><span class="nav-index" aria-hidden="true">&#9835;</span><span class="nav-label">Drumbeat and Melody</span></a>
+          </nav>
+          <nav class="page-nav" data-page-nav="photography" aria-label="On the Photography page" hidden>
+            <a class="active" href="#photography-2021"><span class="nav-index">01</span><span class="nav-label">2021</span></a>
+            <a href="#photography-2022"><span class="nav-index">02</span><span class="nav-label">2022</span></a>
+            <a href="#photography-2023"><span class="nav-index">03</span><span class="nav-label">2023</span></a>
+            <a href="#photography-2024"><span class="nav-index">04</span><span class="nav-label">2024</span></a>
+            <a href="#photography-2025"><span class="nav-index">05</span><span class="nav-label">2025</span></a>
+            <a href="#photography-2026"><span class="nav-index">06</span><span class="nav-label">2026</span></a>
+          </nav>
+        </div>
+        <section class="music-transport is-empty" data-music-transport aria-label="Music player">
+          <button class="music-transport-heading" data-music-open type="button" aria-label="Open the current track in Drumbeat and Melody" disabled><strong></strong><span aria-hidden="true">↗</span></button>
+          <div class="music-transport-controls">
+            <button class="music-play-button" data-music-play type="button" aria-label="Select a track to play" disabled><span aria-hidden="true"></span></button>
+            <div class="music-progress-wrap">
+              <div class="music-progress-control">
+                <div class="music-progress-visual" data-music-progress-visual aria-hidden="true">
+                  <span class="music-progress-fill" data-music-progress-fill></span>
+                  <span class="music-progress-thumb" data-music-progress-thumb></span>
+                </div>
+                <input data-music-progress type="range" min="0" max="1000" value="0" step="1" aria-label="Song position">
+              </div>
+              <div class="music-time-row">
+                <span data-music-current>0:00</span>
+                <span class="music-duration-state" data-music-duration-state>
+                  <span class="music-duration-value" data-music-duration>—:—</span>
+                  <span class="music-duration-spinner" aria-hidden="true"></span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
+    </aside>
 
-      <div class="door-grid">
-        <a class="door door-lab" href="lab.html">
-          <span class="door-no">01</span>
-          <div class="lab-icon" aria-hidden="true"><i></i><i></i><b>?</b></div>
-          <div><p>TRY · BREAK · LEARN</p><h3>Lab</h3><span>奇怪但有趣的实验 ↗</span></div>
-        </a>
-        <a class="door door-model" href="model-maker.html">
-          <span class="door-no">02</span>
-          <div class="cube" aria-hidden="true"><i></i><b></b></div>
-          <div><p>BUILD · SHAPE · PLAY</p><h3>Model Maker</h3><span>把想法变成立体 ↗</span></div>
-        </a>
-        <a class="door door-music" href="music.html">
-          <span class="door-no">03</span>
-          <div class="record" aria-hidden="true"><i></i></div>
-          <div><p>LISTEN · FEEL · REPEAT</p><h3>Music</h3><span>此刻正在播放 ↗</span></div>
-        </a>
-        <a class="door door-about" href="about.html">
-          <span class="door-no">04</span>
-          <div class="mini-portrait" aria-hidden="true"><i></i><b>☺</b></div>
-          <div><p>PERSON · STORY · NOW</p><h3>About Me</h3><span>关于屏幕后面的我 ↗</span></div>
-        </a>
+    <section class="content-panel" aria-live="polite">
+      <div class="content-inner">
+        <header class="content-header">
+          <div class="primary-nav-frame">
+            <nav aria-label="Site navigation">
+              <a class="active" href="#profile" data-view-target="profile" aria-current="page">Profile</a>
+              <a href="#research" data-view-target="research">Research</a>
+              <a href="#lab" data-view-target="lab">Lab</a>
+              <a href="#music" data-view-target="music">Music</a>
+              <a href="#photography" data-view-target="photography">Lens</a>
+            </nav>
+          </div>
+        </header>
+
+        <div class="view-stack">
+        <section class="content-view active" id="profile" data-view="profile" aria-label="Profile">
+          <section class="research-showcase page-section active" id="profile-overview" aria-labelledby="profile-overview-title">
+            <div class="research-showcase-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">ABOUT ME / 01</p>
+                <h2 id="profile-overview-title">Mechanics meets embedded intelligence.</h2>
+              </header>
+              <div class="research-showcase-content">
+                <div class="research-showcase-copy">
+                  <p class="page-kicker">PROFILE</p>
+                  <ul class="thermal-points">
+                    <li>Mechanical Engineering Ph.D. candidate and Research Assistant at the University of Vermont.</li>
+                    <li>I build real-time embedded and cyber-physical systems that sense and respond.</li>
+                    <li>My work spans localization, thermal management, infrastructure monitoring, edge AI, and human interfaces.</li>
+                  </ul>
+                </div>
+                <figure class="research-visual profile-portrait-visual">
+                  <img src="assets/yi-liu-portrait.png?v=20260818-14" alt="Cartoon portrait of Yi Liu" draggable="false">
+                </figure>
+              </div>
+            </div>
+          </section>
+
+          <section class="research-showcase page-section" id="profile-experience" aria-labelledby="profile-experience-title" aria-hidden="true" inert>
+            <div class="research-showcase-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">EXPERIENCE / 02</p>
+                <h2 id="profile-experience-title">Building across research, teaching, and industry.</h2>
+              </header>
+              <div class="research-showcase-content is-full">
+                <div class="experience-signal" aria-label="Professional experience timeline">
+                  <span class="profile-timeline-line experience-timeline-line" aria-hidden="true"></span>
+                  <article class="experience-stop">
+                    <div class="experience-marker"><span>2017</span><i aria-hidden="true"></i></div>
+                    <div class="experience-card"><small>FIELD</small><h3>Workshop Intern</h3><p>Hyundai Motor Company</p><ul><li>Inspection</li><li>Maintenance</li></ul></div>
+                  </article>
+                  <article class="experience-stop">
+                    <div class="experience-marker"><span>2017—18</span><i aria-hidden="true"></i></div>
+                    <div class="experience-card"><small>INDUSTRY</small><h3>Engineering Intern</h3><p>CIMC Raffles Offshore</p><ul><li>SolidWorks</li><li>Sealing systems</li></ul></div>
+                  </article>
+                  <article class="experience-stop">
+                    <div class="experience-marker"><span>2021—23</span><i aria-hidden="true"></i></div>
+                    <div class="experience-card"><small>TEACH</small><h3>Teaching Assistant</h3><p>University of Vermont</p><ul><li>Engineering design</li><li>System dynamics</li></ul></div>
+                  </article>
+                  <article class="experience-stop current">
+                    <div class="experience-marker"><span>2023—</span><i aria-hidden="true"></i></div>
+                    <div class="experience-card"><small>LIVE · RESEARCH</small><h3>Research Assistant</h3><p>University of Vermont</p><ul><li>Embedded AI</li><li>Cyber-physical systems</li></ul></div>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="research-showcase page-section" id="profile-background" aria-labelledby="profile-background-title" aria-hidden="true" inert>
+            <div class="research-showcase-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">EDUCATION / 03</p>
+                <h2 id="profile-background-title">A foundation in mechanical engineering.</h2>
+              </header>
+              <div class="research-showcase-content is-full">
+                <div class="education-timeline" aria-label="Education timeline progressing upward from bachelor's to Ph.D.">
+                  <span class="profile-timeline-line education-timeline-line" aria-hidden="true"></span>
+                  <article class="education-stop current">
+                    <div class="education-marker"><span>2021—</span><i aria-hidden="true"></i></div>
+                    <div class="education-card">
+                      <small>ACTIVE</small><h3>Ph.D. Candidate</h3><p>Mechanical Engineering · University of Vermont</p>
+                      <ul><li>Embedded intelligence</li><li>Cyber-physical systems</li></ul>
+                    </div>
+                  </article>
+                  <article class="education-stop">
+                    <div class="education-marker"><span>2018—21</span><i aria-hidden="true"></i></div>
+                    <div class="education-card">
+                      <small>RESEARCH</small><h3>Master of Science</h3><p>Mechanical Engineering · University of Vermont</p>
+                      <ul><li>Modeling</li><li>Experimental research</li></ul>
+                    </div>
+                  </article>
+                  <article class="education-stop">
+                    <div class="education-marker"><span>2013—17</span><i aria-hidden="true"></i></div>
+                    <div class="education-card">
+                      <small>FOUNDATION</small><h3>Bachelor of Science</h3><p>Mechanical Engineering · Hanyang University</p>
+                      <ul><li>Mechanics</li><li>Engineering design</li></ul>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="research-showcase page-section" id="profile-skills" aria-labelledby="profile-skills-title" aria-hidden="true" inert>
+            <div class="research-showcase-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">TECHNICAL SKILLS / 04</p>
+                <h2 id="profile-skills-title">Tools for sensing, building, and reasoning.</h2>
+              </header>
+              <div class="research-showcase-content is-full">
+                <div class="skills-network" data-skills-network>
+                  <div class="skill-tree" aria-label="Interactive skill tree rooted at embedded intelligence">
+                    <svg viewBox="0 0 1000 420" preserveAspectRatio="none" aria-hidden="true">
+                      <g class="skill-depth-routes skill-depth-routes-one" data-skill-depth-routes="1">
+                        <path d="M135 210C171 210 188 118 224 118"/>
+                        <path d="M135 210C171 210 188 302 224 302"/>
+                      </g>
+                      <g class="skill-depth-routes skill-depth-routes-two" data-skill-depth-routes="2">
+                        <path d="M336 118C386 118 411 34 461 34"/>
+                        <path d="M336 118C386 118 411 101 461 101"/>
+                        <path d="M336 118C386 118 411 168 461 168"/>
+                        <path d="M336 302C386 302 411 252 461 252"/>
+                        <path d="M336 302C386 302 411 319 461 319"/>
+                        <path d="M336 302C386 302 411 386 461 386"/>
+                      </g>
+                      <g class="skill-leaf-routes" data-skill-leaf-routes></g>
+                    </svg>
+                    <div class="skill-core"><span>EMBEDDED</span><strong>INTELLIGENCE</strong></div>
+                    <div class="skill-branch skill-branch-compute"><span>SOFTWARE</span><strong>Software Layer</strong></div>
+                    <div class="skill-branch skill-branch-physical"><span>PHYSICAL</span><strong>Physical Interface</strong></div>
+                    <button class="skill-node skill-node-code active" type="button" data-skill-title="Programming" data-skill-summary="Software for devices, analysis, and interactive systems." data-skill-tools="Python · C · C++ · C# · Java · JavaScript" data-skill-levels="3 · 3 · 3 · 4 · 4 · 3" aria-pressed="true"><span>CODE</span><strong>Programming</strong></button>
+                    <button class="skill-node skill-node-ai" type="button" data-skill-title="AI and algorithms" data-skill-summary="Models and estimators that convert measurements into decisions." data-skill-tools="Neural Networks · MoE · Kalman Filter · Madgwick AHRS" data-skill-levels="3 · 3 · 4 · 4" aria-pressed="false"><span>AI</span><strong>Algorithms</strong></button>
+                    <button class="skill-node skill-node-embed" type="button" data-skill-title="Embedded systems" data-skill-summary="Reliable computation and communication close to the physical system." data-skill-tools="ESP32 · Pi" data-skill-levels="4 · 3" aria-pressed="false"><span>EMBED</span><strong>Systems</strong></button>
+                    <button class="skill-node skill-node-sense" type="button" data-skill-title="Sensors and hardware" data-skill-summary="Turning motion, position, pressure, and temperature into observable state." data-skill-tools="UWB · IMU · DPS310" data-skill-levels="3 · 4 · 2" aria-pressed="false"><span>SENSE</span><strong>Hardware</strong></button>
+                    <button class="skill-node skill-node-xr" type="button" data-skill-title="AR/VR and visualization" data-skill-summary="Human interfaces for understanding and interacting with physical systems." data-skill-tools="Unity · MRTK · HoloLens 2" data-skill-levels="4 · 4 · 4" aria-pressed="false"><span>XR</span><strong>Interfaces</strong></button>
+                    <button class="skill-node skill-node-tools" type="button" data-skill-title="Engineering tools" data-skill-summary="Design and analysis tools for building the physical layer." data-skill-tools="MATLAB · SolidWorks" data-skill-levels="4 · 4" aria-pressed="false"><span>TOOLS</span><strong>Engineering</strong></button>
+                    <section class="skill-tools-branch" data-skill-tools-branch aria-live="polite">
+                      <div class="skill-tool-list"></div>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="research-showcase page-section" id="profile-publications" aria-labelledby="profile-publications-title" aria-hidden="true" inert>
+            <div class="research-showcase-layout publications-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">PUBLICATIONS / 05</p>
+                <h2 id="profile-publications-title">Research made public.</h2>
+              </header>
+              <div class="publications-pager" data-publications-pager tabindex="0" aria-label="Publications pages" aria-live="polite">
+                <section class="publications-page is-active" data-publications-page aria-label="Publications page 1 of 2">
+                  <article class="publication-card">
+                    <div class="publication-meta"><span>2025</span><span>01</span></div>
+                    <h3>HeSARIC: A heterogeneous cyber–physical robotic swarm framework for structural health monitoring with augmented reality representation</h3>
+                    <p>A Fath, C Sauter, Y Liu, B Gamble, D Burns, E Trombley, SKR Sathi, T Xia, et al.</p>
+                    <small>Micromachines 16 (4), 460</small>
+                  </article>
+                  <article class="publication-card">
+                    <div class="publication-meta"><span>2025</span><span>02</span></div>
+                    <h3>An Approach to Thermal Management and Performance Throttling for Federated Computation on a Low-Cost 3D ESP32-S3 Package Stack</h3>
+                    <p>Y Liu, PS Shah, T Xia, D Huston</p>
+                    <small>Computers 14 (4), 147</small>
+                  </article>
+                  <article class="publication-card">
+                    <div class="publication-meta"><span>2025</span><span>03</span></div>
+                    <h3>Self-Referencing Digital Twin for Thermal and Task Management in Package Stacked ESP32-S3 Microcontrollers with Mixture-of-Experts and Neural Networks</h3>
+                    <p>Y Liu, PS Shah, T Xia, D Huston</p>
+                    <small>Computers 15 (1), 4</small>
+                  </article>
+                  <article class="publication-card">
+                    <div class="publication-meta"><span>2025</span><span>04</span></div>
+                    <h3>Monitoring Structures with Teams of Mobile Robots</h3>
+                    <p>A Fath, Y Liu, B Gamble, T Xia, D Huston</p>
+                    <small>Structural Health Monitoring 2025</small>
+                  </article>
+                  <article class="publication-card">
+                    <div class="publication-meta"><span>2024</span><span>05</span></div>
+                    <h3>Indoor infrastructure maintenance framework using networked sensors, robots, and augmented reality human interface</h3>
+                    <p>A Fath, N Hanna, Y Liu, S Tanch, T Xia, D Huston</p>
+                    <small>Future Internet 16 (5), 170</small>
+                  </article>
+                </section>
+                <section class="publications-page" data-publications-page aria-label="Publications page 2 of 2" aria-hidden="true" inert>
+                  <article class="publication-card">
+                    <div class="publication-meta"><span>2024</span><span>06</span></div>
+                    <h3>Marsbot: A bristle-bot microrobot with augmented reality steering control for wireless structural health monitoring</h3>
+                    <p>A Fath, Y Liu, T Xia, D Huston</p>
+                    <small>Micromachines 15 (2), 202</small>
+                  </article>
+                  <article class="publication-card">
+                    <div class="publication-meta"><span>2023</span><span>07</span></div>
+                    <h3>Structural Health Monitoring with Robot and Augmented Reality Teams</h3>
+                    <p>A Fath, Y Liu, S Tanch, N Hanna, T Xia, D Huston</p>
+                    <small>Destec Publications, Inc.</small>
+                  </article>
+                  <article class="publication-card">
+                    <div class="publication-meta"><span>2023</span><span>08</span></div>
+                    <h3>Monitoring Infrastructure using Augmented Reality in a Network of Microrobots with Visual Data Analysis</h3>
+                    <p>A Fath, N Hanna, Y Liu, S Tanch, T Xia, D Huston</p>
+                    <small>ASCE Engineering Mechanics Institute 2023 Conference, 495</small>
+                  </article>
+                  <article class="publication-card">
+                    <div class="publication-meta"><span>2021</span><span>09</span></div>
+                    <h3>3D acoustic pipe locator imaging based on finite element analysis</h3>
+                    <p>Y Liu</p>
+                  </article>
+                </section>
+              </div>
+              <nav class="research-page-ruler publications-page-ruler" aria-label="Publications page navigation">
+                <button class="active" data-publications-page-target="0" type="button" aria-label="Go to publications page 1" aria-current="page"></button>
+                <button data-publications-page-target="1" type="button" aria-label="Go to publications page 2"></button>
+              </nav>
+            </div>
+          </section>
+        </section>
+
+        <section class="content-view" id="research" data-view="research" aria-label="Research" aria-hidden="true" inert>
+          <section class="research-showcase page-section active" id="research-overview" aria-labelledby="research-overview-title">
+            <div class="research-showcase-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">RESEARCH / 00</p>
+                <h2 id="research-overview-title">Intelligence for the physical world.</h2>
+              </header>
+              <div class="research-showcase-content research-overview-content">
+                <ul class="thermal-points research-project-intro" aria-label="Selected research projects">
+                  <li><strong>Thermal-aware computing</strong><p>A six-node computing stack that predicts heat and adapts workloads before performance degrades.</p></li>
+                  <li><strong>Robotic infrastructure inspection</strong><p>A cooperative MARSBot system for localization, crack detection, and augmented-reality field control.</p></li>
+                  <li><strong>Acoustic pipe imaging</strong><p>A mobile probing platform that maps underground pipe geometry from position-tagged sound measurements.</p></li>
+                </ul>
+                <figure class="research-mindmap" data-research-mindmap aria-label="Mind map connecting embedded intelligence projects to the skills used in each project.">
+                  <svg class="research-map-routes" viewBox="0 0 1000 420" preserveAspectRatio="none" aria-hidden="true">
+                    <g data-research-map-routes="projects"></g>
+                    <g data-research-map-routes="skills"></g>
+                  </svg>
+                  <div class="research-map-core"><span>RESEARCH</span><strong>Embedded<br>Intelligence</strong></div>
+                  <div class="research-map-branches">
+                    <article>
+                      <div class="research-map-project"><span>THERMAL</span><strong>Computing Stack</strong></div>
+                      <div class="research-map-skills"><span>Raspberry Pi</span><span>Python</span><span>MoE</span><span>Neural Networks</span></div>
+                    </article>
+                    <article>
+                      <div class="research-map-project"><span>ROBOTICS</span><strong>MARSBot</strong></div>
+                      <div class="research-map-skills"><span>ESP32</span><span>UWB</span><span>IMU</span><span>Kalman Filter</span><span>Unity / MRTK</span></div>
+                    </article>
+                    <article>
+                      <div class="research-map-project"><span>ACOUSTIC</span><strong>Pipe Imaging</strong></div>
+                      <div class="research-map-skills"><span>MATLAB</span><span>Finite Element Analysis</span></div>
+                    </article>
+                  </div>
+                </figure>
+              </div>
+            </div>
+          </section>
+
+          <section class="thermal-demo page-section" id="research-thermal" data-thermal-demo aria-labelledby="thermal-title" aria-hidden="true" inert>
+            <div class="thermal-layout">
+              <header class="thermal-heading">
+                <p class="small-label">THERMAL INTELLIGENCE / 01</p>
+                <h2 id="thermal-title">A system that knows when it is getting hot.</h2>
+              </header>
+
+              <div class="thermal-pager" data-thermal-pager aria-label="Thermal intelligence pages">
+                <article class="thermal-page thermal-page-stack is-active" data-thermal-page aria-label="Page 1: Stack architecture">
+                  <div class="thermal-page-copy">
+                    <p class="page-kicker">PACKAGE STACK</p>
+                    <ul class="thermal-points">
+                      <li>6 vertically stacked Raspberry Pi Zero 2 W nodes emulate a dense package stack.</li>
+                      <li>Limited exposed surface area restricts heat dissipation to ambient air, creating position-dependent temperatures.</li>
+                      <li>Live SoC temperature, CPU frequency, and power expose each node’s thermal-energy state.</li>
+                    </ul>
+                  </div>
+                  <div class="stack-scene" role="group" aria-label="A wireframe Raspberry Pi stack with central system-on-chip heat sources.">
+                    <canvas class="device-canvas" data-device-canvas aria-label="Interactive 3D model of a translucent rectangular device board. Drag to rotate."></canvas>
+                    <div class="stack-drag-hint" aria-hidden="true">
+                      <svg viewBox="0 0 60 24">
+                        <path class="stack-drag-arrows" d="M15 12H2m0 0 4.5-4.5M2 12l4.5 4.5M45 12h13m0 0-4.5-4.5M58 12l-4.5 4.5" />
+                        <path class="stack-drag-cursor" d="M25 3.5v17l4-3.7 3.2 6.4 3.4-1.7-3.1-6H39z" />
+                      </svg>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="thermal-page thermal-page-moe" data-thermal-page aria-label="Page 3: Mixture of Experts">
+                  <div class="thermal-page-copy moe-copy">
+                    <p class="page-kicker">MIXTURE OF EXPERTS</p>
+                    <ul class="thermal-points">
+                      <li>Each Pi reports its thermal, compute, power, and workload state.</li>
+                      <li>Specialized experts propose actions while the gating network determines their relative contributions.</li>
+                      <li>The contributions are combined into a tile assignment and returned to the Pi.</li>
+                    </ul>
+                  </div>
+
+                  <div class="moe-stage">
+                    <div class="moe-pi-stage" data-moe-routing-stage>
+                      <svg class="moe-routing-lines" data-moe-routing-lines aria-hidden="true">
+                        <g data-moe-experts-routes></g>
+                        <g data-moe-gating-routes></g>
+                        <g data-moe-expert-result-routes></g>
+                        <g data-moe-gating-result-routes></g>
+                        <g data-moe-contribution-merge-routes></g>
+                        <g data-moe-merged-result-route></g>
+                        <g data-moe-result-pi-route></g>
+                      </svg>
+                      <section class="moe-pi-stack is-moe-muted" data-moe-routing-source aria-label="Pi state inputs: SoC temperature, processor frequency, power, and completed tasks.">
+                        <header data-moe-pi-target><span>Pi</span></header>
+                        <div class="moe-pi-stack-list">
+                          <div class="moe-pi-device"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3a2 2 0 0 1 4 0v5.2a3.5 3.5 0 1 1-4 0z"/><path d="M8 5v5"/></svg><strong>SoC Temperature</strong></div>
+                          <div class="moe-pi-device"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="4" width="8" height="8" rx="1"/><path d="M6 1v3M10 1v3M6 12v3M10 12v3M1 6h3M1 10h3M12 6h3M12 10h3"/></svg><strong>CPU Frequency</strong></div>
+                          <div class="moe-pi-device moe-pi-device-more" aria-label="Additional device states">···</div>
+                          <div class="moe-pi-device"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9 1 3.5 9H8l-1 6 5.5-8H8z"/></svg><strong>Power</strong></div>
+                          <div class="moe-pi-device"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="m5 8 2 2 4-4"/></svg><strong>Completed Tasks</strong></div>
+                        </div>
+                      </section>
+                      <div class="moe-model-column">
+                        <section class="moe-pi-stack is-moe-muted" data-moe-experts-source aria-label="Experts for thermal state, processor frequency, power, and workload.">
+                          <header data-moe-experts-target><span>Experts</span></header>
+                          <div class="moe-pi-stack-list">
+                            <div class="moe-pi-device"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3a2 2 0 0 1 4 0v5.2a3.5 3.5 0 1 1-4 0z"/><path d="M8 5v5"/></svg><strong>Thermal Expert</strong></div>
+                            <div class="moe-pi-device"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="4" width="8" height="8" rx="1"/><path d="M6 1v3M10 1v3M6 12v3M10 12v3M1 6h3M1 10h3M12 6h3M12 10h3"/></svg><strong>Frequency Expert</strong></div>
+                            <div class="moe-pi-device moe-pi-device-more" aria-label="Additional experts">···</div>
+                            <div class="moe-pi-device"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9 1 3.5 9H8l-1 6 5.5-8H8z"/></svg><strong>Power Expert</strong></div>
+                            <div class="moe-pi-device"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 12.5h12M3.5 10l3-3 2.2 2.2L13 4.5"/><path d="M10.5 4.5H13V7"/></svg><strong>Workload Expert</strong></div>
+                          </div>
+                        </section>
+                        <section class="moe-pi-stack moe-gating-stack is-moe-muted" aria-label="Gating network">
+                          <header data-moe-gating-target><span>Gating Network</span></header>
+                          <div class="moe-pi-device moe-gating-network" data-moe-gating-source aria-label="Expert weighting layer">
+                            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12"/><circle cx="6" cy="4" r="1.5"/><circle cx="10.5" cy="8" r="1.5"/><circle cx="7.5" cy="12" r="1.5"/></svg>
+                            <strong>Expert Weighting</strong>
+                          </div>
+                        </section>
+                      </div>
+                      <div class="moe-result-column">
+                        <section class="moe-pi-stack is-moe-muted" data-moe-results-target aria-label="Weighted contribution of each expert to the final decision.">
+                          <header>Expert Contributions</header>
+                          <div class="moe-pi-stack-list">
+                            <div class="moe-pi-device moe-weighted-layer" aria-label="Expert contribution 78 percent"><span class="moe-weight-bar"><i style="--weight:78%"></i></span></div>
+                            <div class="moe-pi-device moe-weighted-layer" aria-label="Expert contribution 56 percent"><span class="moe-weight-bar"><i style="--weight:56%"></i></span></div>
+                            <div class="moe-pi-device moe-pi-device-more" aria-label="Additional expert contributions">···</div>
+                            <div class="moe-pi-device moe-weighted-layer" aria-label="Expert contribution 68 percent"><span class="moe-weight-bar"><i style="--weight:68%"></i></span></div>
+                            <div class="moe-pi-device moe-weighted-layer" aria-label="Expert contribution 44 percent"><span class="moe-weight-bar"><i style="--weight:44%"></i></span></div>
+                          </div>
+                        </section>
+                      </div>
+                      <section class="moe-pi-stack moe-workload-stack is-moe-muted" aria-label="Scheduling results.">
+                        <header data-moe-final-target><span>Results</span></header>
+                        <div class="moe-pi-stack-list">
+                          <div class="moe-pi-device" data-moe-final-source><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx=".5"/><rect x="9" y="2" width="5" height="5" rx=".5"/><rect x="2" y="9" width="5" height="5" rx=".5"/><rect x="9" y="9" width="5" height="5" rx=".5"/></svg><strong>Assigned Tiles</strong></div>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="thermal-page thermal-page-scheduler" data-thermal-page aria-label="Page 2: Scheduling model">
+                  <div class="thermal-page-copy">
+                    <p class="page-kicker">THERMAL SCHEDULING</p>
+                    <ul class="thermal-points">
+                      <li>Parallel tasks are split into tiles and dispatched asynchronously across available nodes.</li>
+                      <li>Thermal headroom and processor capacity jointly drive frequency and workload allocation.</li>
+                      <li>At 60°C, MoE control delivered 32% more tasks with 27.8% less energy per task than fixed 1 GHz operation.</li>
+                    </ul>
+                  </div>
+
+                  <div class="thermal-stage">
+                <div class="thermal-diagram-key">
+                  <span><strong>Raspberry Pi Stack</strong></span>
+                  <span><strong>PARALLEL COMPUTING TASKS</strong></span>
+                </div>
+                <div class="thermal-canvas-frame">
+                  <canvas class="thermal-canvas" data-thermal-canvas role="img" aria-label="Interactive model. Left: six Raspberry Pi devices. Right: one job split into 81 tiles. A tile label from P1 through P6 shows which device receives it."></canvas>
+                </div>
+                <div class="thermal-controls" aria-label="Thermal model controls">
+                  <span class="thermal-control-label">RUN MODE</span>
+                  <button class="thermal-mode" data-scheduler-mode="pipeline" type="button" aria-label="Run baseline scheduler" aria-pressed="true" title="Run baseline scheduler">
+                    <span class="thermal-mode-dot" aria-hidden="true"></span>
+                    <span class="thermal-mode-label">Baseline</span>
+                    <strong class="thermal-mode-time" data-comparison-pipeline aria-live="polite">RUN</strong>
+                  </button>
+                  <div class="thermal-ai-control">
+                    <button class="thermal-mode" data-scheduler-mode="ai" type="button" aria-label="Run AI scheduler" aria-pressed="false" title="Run AI scheduler">
+                      <span class="thermal-mode-dot" aria-hidden="true"></span>
+                      <span class="thermal-mode-label">AI scheduler</span>
+                      <strong class="thermal-mode-time" data-comparison-ai aria-live="polite">RUN</strong>
+                    </button>
+                    <label class="thermal-limit-control">
+                      <input data-ai-temp-limit type="range" min="60" max="70" step="1" value="65" aria-label="AI temperature limit from 60 to 70 degrees Celsius">
+                      <output data-ai-temp-output>65°C</output>
+                    </label>
+                  </div>
+                </div>
+                  </div>
+                </article>
+              </div>
+              <nav class="thermal-page-ruler" aria-label="Thermal intelligence page navigation">
+                <button class="active" data-thermal-page-target="0" type="button" aria-label="Go to stack architecture page" aria-current="page"></button>
+                <button data-thermal-page-target="1" type="button" aria-label="Go to scheduling model page"></button>
+                <button data-thermal-page-target="2" type="button" aria-label="Go to mixture of experts page"></button>
+              </nav>
+            </div>
+          </section>
+
+          <section class="research-showcase page-section" id="research-robotics" aria-labelledby="research-robotics-title" aria-hidden="true" inert>
+            <div class="research-showcase-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">ROBOTIC INFRASTRUCTURE MONITORING / 02</p>
+                <h2 id="research-robotics-title">From mobile robots to a shared view of structural condition.</h2>
+              </header>
+              <div class="research-subpager" data-research-subpager aria-label="Robotic infrastructure monitoring pages">
+                <article class="research-subpage has-visual is-active" data-research-subpage aria-label="Page 1: Robot">
+                  <div class="research-subpage-copy">
+                    <p class="page-kicker">MOBILE ROBOT</p>
+                    <ul class="thermal-points">
+                      <li>Compact bristle-bots and mobile robots carry cameras and wireless sensors to parts of a structure that are difficult to inspect directly.</li>
+                      <li>Small, low-cost platforms make distributed structural monitoring possible without permanently instrumenting every location.</li>
+                      <li>Each robot turns a local, difficult-to-reach surface into an observable part of the monitoring system.</li>
+                    </ul>
+                  </div>
+                  <figure class="research-visual research-visual-marsbot" aria-label="Interactive structural model of the MARSBot microrobot. Drag to rotate.">
+                    <div class="marsbot-model-stage">
+                      <canvas class="marsbot-model-canvas" data-marsbot-canvas aria-label="Interactive 3D MARSBot model with a plate body, camera, cylindrical motor, eccentric rotor, and flexible legs. Drag to rotate."></canvas>
+                      <div class="stack-drag-hint" aria-hidden="true">
+                        <svg viewBox="0 0 60 24">
+                          <path class="stack-drag-arrows" d="M15 12H2m0 0 4.5-4.5M2 12l4.5 4.5M45 12h13m0 0-4.5-4.5M58 12l-4.5 4.5" />
+                          <path class="stack-drag-cursor" d="M25 3.5v17l4-3.7 3.2 6.4 3.4-1.7-3.1-6H39z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </figure>
+                </article>
+                <article class="research-subpage has-visual" data-research-subpage aria-label="Page 2: Cooperative crack inspection">
+                  <div class="research-subpage-copy">
+                    <p class="page-kicker">CRACK INSPECTION</p>
+                    <ul class="thermal-points">
+                      <li>Three robots photograph overlapping regions of the same wall from coordinated positions.</li>
+                      <li>Sobel edge detection extracts likely crack boundaries from each camera image.</li>
+                      <li>Image stitching combines the separate observations into one wall-scale inspection map.</li>
+                    </ul>
+                  </div>
+                  <figure class="research-visual research-visual-crack" aria-label="Concrete wall with an irregular structural crack.">
+                    <canvas class="crack-pipeline-canvas" data-crack-pipeline role="img" aria-label="A concrete wall with a wide, irregular horizontal crack and several fine secondary cracks."></canvas>
+                  </figure>
+                </article>
+                <article class="research-subpage has-visual" data-research-subpage aria-label="Page 3: Augmented reality interface">
+                  <div class="research-subpage-copy">
+                    <p class="page-kicker">AR INTERFACE</p>
+                    <ul class="thermal-points">
+                      <li>Augmented reality brings robot positions, camera imagery, and detected cracks into the operator’s view.</li>
+                      <li>The interface supports robot steering, team coordination, and interpretation of inspection results.</li>
+                      <li>Spatially registered information connects physical infrastructure to monitoring evidence and maintenance decisions.</li>
+                    </ul>
+                  </div>
+                  <figure class="research-visual research-visual-ar" aria-label="Interactive augmented reality interface for steering MARSBot 02 with finger gestures.">
+                    <div class="ar-control-stage" data-ar-control>
+                      <svg class="ar-control-map" viewBox="0 0 820 500" role="img" aria-labelledby="ar-control-title ar-control-desc">
+                        <title id="ar-control-title">Gesture-controlled MARSBot augmented reality view</title>
+                        <desc id="ar-control-desc">An AR visor shows a shared scene view and the robot camera view. Buttons positioned on a hand below control forward, left, and right movement.</desc>
+                        <defs>
+                          <symbol id="ar-marsbot-symbol" viewBox="-26 -52 52 92">
+                            <rect class="ar-marsbot-body" x="-21" y="-36" width="42" height="72" rx="2"/>
+                            <rect class="ar-marsbot-camera-back" x="-14" y="-43" width="28" height="9" rx="2"/>
+                            <rect class="ar-marsbot-camera-neck" x="-7" y="-49" width="14" height="6" rx="1"/>
+                            <circle class="ar-marsbot-camera-lens" cx="0" cy="-49" r="4"/>
+                          </symbol>
+                          <clipPath id="ar-visor-clip" clipPathUnits="userSpaceOnUse">
+                            <path transform="translate(34 0) scale(.92)" d="M150 24Q410 0 670 24Q760 28 760 110L744 204Q734 290 652 290L494 290Q468 290 452 268L436 246Q425 230 410 230Q395 230 384 246L368 268Q352 290 326 290L168 290Q86 290 76 204L60 110Q60 28 150 24Z"/>
+                          </clipPath>
+                        </defs>
+                        <g class="ar-visor-assembly">
+                        <foreignObject class="ar-visor-3d-shell" x="89.2" y="3.68" width="644" height="263.12" clip-path="url(#ar-visor-clip)">
+                          <div class="ar-visor-3d-host" xmlns="http://www.w3.org/1999/xhtml">
+                            <canvas class="ar-visor-3d-canvas" data-ar-3d-canvas role="img" aria-label="Live three-dimensional camera view from MARSBot 02 approaching a cracked wall."></canvas>
+                            <canvas class="ar-visor-cam-canvas" data-ar-cam-canvas aria-hidden="true"></canvas>
+                          </div>
+                        </foreignObject>
+                        <g clip-path="url(#ar-visor-clip)">
+                          <g transform="translate(34 0) scale(.92)">
+                          <rect class="ar-lens-surface" x="42" y="12" width="736" height="286"/>
+                          <g class="ar-world">
+                            <g class="ar-camera-full" data-ar-camera-scene>
+                              <rect class="ar-camera-surface" x="42" y="12" width="736" height="286"/>
+                              <image class="ar-camera-texture" href="assets/Crack/concrete-plaster-mask.png" x="35" y="5" width="750" height="300" preserveAspectRatio="xMidYMid slice"/>
+                              <image class="ar-camera-crack-image" href="assets/Crack/crack-reference-mask.png" x="45" y="72" width="730" height="180" preserveAspectRatio="xMidYMid meet"/>
+                            </g>
+                          </g>
+                          <g class="ar-camera-inset-ui" aria-hidden="true">
+                            <rect x="90" y="34" width="210" height="100" rx="9"/>
+                            <text x="102" y="52">MARSBOT CAM</text>
+                          </g>
+                          </g>
+                        </g>
+                        <path class="ar-visor-frame" transform="translate(34 0) scale(.92)" d="M150 24Q410 0 670 24Q760 28 760 110L744 204Q734 290 652 290L494 290Q468 290 452 268L436 246Q425 230 410 230Q395 230 384 246L368 268Q352 290 326 290L168 290Q86 290 76 204L60 110Q60 28 150 24Z"/>
+                        </g>
+                        <g class="ar-hand-cluster" transform="translate(275 110) scale(.68)">
+                        <g class="ar-hand-drawing" aria-hidden="true">
+                          <path d="M382 486L370 430M370 430L395 420M395 420L425 418 448 424 460 438 452 486M448 424L455 382 461 340M460 438L475 405 486 372M395 420L425 418M425 418L448 424M448 424L460 438"/>
+                          <g class="ar-command-finger ar-command-finger-thumb" data-ar-finger-shape="left"><g class="ar-finger-segment ar-thumb-proximal"><path d="M370 430L350 410"/><circle cx="350" cy="410" r="4"/><g class="ar-finger-segment ar-thumb-distal"><path d="M350 410L340 390"/><circle cx="340" cy="390" r="5"/></g></g></g>
+                          <g class="ar-command-finger ar-command-finger-index" data-ar-finger-shape="forward"><g class="ar-finger-segment ar-index-proximal"><path d="M395 420L393 389"/><circle cx="393" cy="389" r="4"/><g class="ar-finger-segment ar-index-middle"><path d="M393 389L392 368"/><circle cx="392" cy="368" r="4"/><g class="ar-finger-segment ar-index-distal"><path d="M392 368L391 348"/><circle cx="391" cy="348" r="5"/></g></g></g></g>
+                          <g class="ar-command-finger ar-command-finger-middle" data-ar-finger-shape="right"><g class="ar-finger-segment ar-middle-proximal"><path d="M425 418L426 383"/><circle cx="426" cy="383" r="4"/><g class="ar-finger-segment ar-middle-middle"><path d="M426 383L426 354"/><circle cx="426" cy="354" r="4"/><g class="ar-finger-segment ar-middle-distal"><path d="M426 354L426 326"/><circle cx="426" cy="326" r="5"/></g></g></g></g>
+                          <circle cx="382" cy="486" r="4"/><circle cx="452" cy="486" r="4"/><circle cx="370" cy="430" r="4"/><circle cx="395" cy="420" r="4"/><circle cx="425" cy="418" r="4"/><circle cx="448" cy="424" r="4"/><circle cx="455" cy="382" r="4"/><circle cx="461" cy="340" r="5"/><circle cx="460" cy="438" r="4"/><circle cx="475" cy="405" r="4"/><circle cx="486" cy="372" r="5"/>
+                        </g>
+                        </g>
+                        <g class="ar-finger-control ar-control-left" data-ar-command="left" role="button" tabindex="0" aria-label="Turn MARSBot left" transform="translate(415 331)">
+                          <rect class="ar-control-hit" width="90" height="44"/>
+                          <text class="ar-control-tag" x="52" y="22" text-anchor="end">LEFT</text>
+                          <circle class="ar-finger-dot" cx="80" cy="22" r="10" aria-hidden="true"/>
+                        </g>
+                        <g class="ar-finger-control ar-control-forward" data-ar-command="forward" role="button" tabindex="0" aria-label="Move MARSBot forward" transform="translate(459 299)">
+                          <rect class="ar-control-hit" width="90" height="44"/>
+                          <text class="ar-control-tag" x="52" y="22" text-anchor="end">FORWARD</text>
+                          <circle class="ar-finger-dot" cx="80" cy="22" r="10" aria-hidden="true"/>
+                        </g>
+                        <g class="ar-finger-control ar-control-right" data-ar-command="right" role="button" tabindex="0" aria-label="Turn MARSBot right" transform="translate(555 285)">
+                          <rect class="ar-control-hit" width="90" height="44"/>
+                          <circle class="ar-finger-dot" cx="10" cy="22" r="10" aria-hidden="true"/>
+                          <text class="ar-control-tag" x="38" y="22" text-anchor="start">RIGHT</text>
+                        </g>
+                      </svg>
+                    </div>
+                  </figure>
+                </article>
+              </div>
+              <nav class="research-page-ruler" aria-label="Robotic infrastructure monitoring page navigation">
+                <button class="active" data-research-page-target="0" type="button" aria-label="Go to robot page" aria-current="page"></button>
+                <button data-research-page-target="1" type="button" aria-label="Go to cooperative inspection page"></button>
+                <button data-research-page-target="2" type="button" aria-label="Go to augmented reality interface page"></button>
+              </nav>
+            </div>
+          </section>
+
+          <section class="research-showcase page-section" id="research-acoustic" aria-labelledby="research-acoustic-title" aria-hidden="true" inert>
+            <div class="research-showcase-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">ACOUSTIC IMAGING / 03</p>
+                <h2 id="research-acoustic-title">Reconstructing buried pipes with sound.</h2>
+              </header>
+              <div class="research-subpager acoustic-subpager" data-acoustic-subpager aria-label="Acoustic pipe imaging pages">
+                <article class="research-subpage has-visual is-active" data-acoustic-subpage aria-label="Page 1: Acoustic probing lab">
+                  <div class="research-subpage-copy">
+                    <p class="page-kicker">PROBING PLATFORM</p>
+                    <ul class="thermal-points">
+                      <li>The Acoustic Probing Lab (APL) is a mobile sensing platform for imaging infrastructure hidden beneath the ground.</li>
+                      <li>An ultrasonic transducer couples sound into the surface while an onboard accelerometer records the returning vibration.</li>
+                      <li>Position-tagged measurements turn a physical scan into data for subsurface reconstruction.</li>
+                    </ul>
+                  </div>
+                  <figure class="research-visual acoustic-visual" aria-label="Diagram of the Acoustic Probing Lab platform and its sensing components.">
+                    <canvas class="acoustic-canvas" data-acoustic-canvas="apl" role="img" aria-label="The APL platform with an ultrasonic transmitter, accelerometer, motion stage, and data acquisition module."></canvas>
+                  </figure>
+                </article>
+                <article class="research-subpage has-visual" data-acoustic-subpage aria-label="Page 2: Fixed-interval acoustic scan">
+                  <div class="research-subpage-copy">
+                    <p class="page-kicker">FIXED-INTERVAL SCAN</p>
+                    <ul class="thermal-points">
+                      <li>APL advances by a fixed distance, stops, and repeats the same pulse–echo measurement.</li>
+                      <li>Each position contributes one spatial sample of the subsurface acoustic response.</li>
+                      <li>The samples assemble into an energy map; the strongest response identifies the buried pipe.</li>
+                    </ul>
+                  </div>
+                  <figure class="research-visual acoustic-visual" aria-label="APL scanning at fixed intervals while an acoustic energy map reveals a buried pipe.">
+                    <canvas class="acoustic-canvas" data-acoustic-canvas="echo" role="img" aria-label="APL pauses at seven equally spaced positions. Each completed pulse and echo reveals another theme-colored portion of the acoustic energy map, with the strongest response marking the buried pipe."></canvas>
+                  </figure>
+                </article>
+                <article class="research-subpage has-visual" data-acoustic-subpage aria-label="Page 3: Scan and reconstruction">
+                  <div class="research-subpage-copy">
+                    <p class="page-kicker">3D RECONSTRUCTION</p>
+                    <ul class="thermal-points">
+                      <li>APL repeats the seven-position scan across four parallel survey rows.</li>
+                      <li>Each row becomes an acoustic energy slice whose central response locates the pipe cross-section.</li>
+                      <li>Interpolating the response centers reconstructs the buried pipe as a continuous three-dimensional geometry.</li>
+                    </ul>
+                  </div>
+                  <figure class="research-visual acoustic-visual" aria-label="Animated stack of acoustic energy maps reconstructing a buried pipe.">
+                    <canvas class="acoustic-canvas" data-acoustic-canvas="scan" role="img" aria-label="Four acoustic energy-map slices appear in depth. Their center responses are smoothly interpolated into a continuous three-dimensional pipe."></canvas>
+                  </figure>
+                </article>
+              </div>
+              <nav class="research-page-ruler" aria-label="Acoustic imaging page navigation">
+                <button class="active" data-acoustic-page-target="0" type="button" aria-label="Go to APL introduction" aria-current="page"></button>
+                <button data-acoustic-page-target="1" type="button" aria-label="Go to fixed-interval acoustic scan"></button>
+                <button data-acoustic-page-target="2" type="button" aria-label="Go to scan and reconstruction"></button>
+              </nav>
+            </div>
+          </section>
+        </section>
+
+        <section class="content-view" id="lab" data-view="lab" aria-label="Lab" aria-hidden="true" inert>
+          <section class="research-showcase page-section active" id="lab-workbench" aria-labelledby="lab-workbench-title">
+            <div class="research-showcase-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">WORKBENCH / 00</p>
+                <h2 id="lab-workbench-title">Ideas become objects, then systems.</h2>
+              </header>
+              <div class="research-showcase-content research-overview-content workbench-overview-content">
+                <ul class="thermal-points research-project-intro" aria-label="Workbench interests">
+                  <li><strong>3D Modeling</strong><p>Shape an idea, resolve its details, and prepare it to exist beyond the screen.</p></li>
+                  <li><strong>3D Printing</strong><p>Turn digital geometry into physical prototypes through making, testing, and iteration.</p></li>
+                  <li><strong>IoT Projects</strong><p>Connect sensors, controllers, and everyday objects into responsive systems.</p></li>
+                </ul>
+                <figure class="research-mindmap workbench-tree" data-research-mindmap aria-label="A maker tree connecting the Workbench to 3D modeling, 3D printing, and IoT projects.">
+                  <svg class="research-map-routes" viewBox="0 0 1000 420" preserveAspectRatio="none" aria-hidden="true">
+                    <g data-research-map-routes="projects"></g>
+                    <g data-research-map-routes="skills"></g>
+                  </svg>
+                  <div class="research-map-core"><span>MAKE · TEST</span><strong>Workbench</strong></div>
+                  <div class="research-map-branches">
+                    <article>
+                      <div class="research-map-project"><span>DESIGN</span><strong>3D Modeling</strong></div>
+                      <div class="research-map-skills"><span>Form</span><span>CAD</span><span>Assembly</span></div>
+                    </article>
+                    <article>
+                      <div class="research-map-project"><span>FABRICATE</span><strong>3D Printing</strong></div>
+                      <div class="research-map-skills"><span>Slice</span><span>Print</span><span>Iterate</span></div>
+                    </article>
+                    <article>
+                      <div class="research-map-project"><span>CONNECT</span><strong>IoT Projects</strong></div>
+                      <div class="research-map-skills"><span>Sense</span><span>Control</span><span>Communicate</span></div>
+                    </article>
+                  </div>
+                </figure>
+              </div>
+            </div>
+          </section>
+
+          <section class="research-showcase page-section" id="lab-locallink" aria-labelledby="lab-locallink-title" aria-hidden="true" inert>
+            <div class="research-showcase-layout locallink-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">LOCALLINK / 01</p>
+                <h2 id="lab-locallink-title">Software, sensors, and light on one local network.</h2>
+              </header>
+
+              <div class="research-subpager locallink-subpager" data-locallink-subpager aria-label="LocalLink project pages">
+                <article class="research-subpage has-visual locallink-subpage is-active" data-locallink-subpage aria-label="Page 1: System architecture">
+                  <div class="research-subpage-copy">
+                    <p class="page-kicker">SYSTEM</p>
+                    <ul class="thermal-points">
+                      <li>LocalLink keeps device discovery and control inside the local network, with the Windows app as the operator surface.</li>
+                      <li>The ESP32 advertises its display and light-sensor capabilities, then receives time, weather, content, and timer commands over UDP.</li>
+                      <li>When the app is absent, NTP-backed local time keeps the lightboard working as a standalone clock.</li>
+                    </ul>
+                  </div>
+                  <figure class="research-visual locallink-visual locallink-system-visual" aria-label="LocalLink system architecture connecting the Windows app to an ESP32 lightboard, with NTP time and a TSL2591 ambient-light sensor.">
+                    <div class="locallink-system-map" data-locallink-system-map aria-hidden="true">
+                      <svg class="locallink-system-routes" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                        <g data-locallink-system-routes></g>
+                      </svg>
+                      <div class="locallink-system-main">
+                        <div class="locallink-system-node" data-locallink-system-node="app">
+                          <span>WINDOWS</span>
+                          <strong>LocalLink</strong>
+                          <small>weather · content · timer</small>
+                        </div>
+                        <div class="locallink-system-link locallink-system-link-network" aria-hidden="true"></div>
+                        <div class="locallink-system-node locallink-system-core" data-locallink-system-node="controller">
+                          <span>CONTROLLER</span>
+                          <strong>ESP32</strong>
+                          <small>discover · sync · render</small>
+                        </div>
+                        <div class="locallink-system-link" aria-hidden="true"></div>
+                        <div class="locallink-system-node locallink-system-output" data-locallink-system-node="display">
+                          <span>AMBIENT</span>
+                          <strong>WS2812</strong>
+                          <div class="locallink-mini-matrix"></div>
+                        </div>
+                      </div>
+                      <div class="locallink-system-support">
+                        <div class="locallink-system-node" data-locallink-system-node="sensor">
+                          <span>SENSE</span>
+                          <strong>TSL2591</strong>
+                          <small>ambient lux</small>
+                        </div>
+                        <div class="locallink-system-node" data-locallink-system-node="time">
+                          <span>TIME</span>
+                          <strong>NTP</strong>
+                          <small>clock fallback</small>
+                        </div>
+                      </div>
+                    </div>
+                  </figure>
+                </article>
+
+                <article class="research-subpage has-visual locallink-subpage" data-locallink-subpage aria-label="Page 2: Control app">
+                  <div class="research-subpage-copy">
+                    <p class="page-kicker">CONTROL APP</p>
+                    <ul class="thermal-points">
+                      <li>Weather, memo, and Lightboard controls live in one dark Windows dashboard.</li>
+                      <li>The display can stay fixed or rotate through time and weather at a chosen interval.</li>
+                      <li>Countdown presets and precise time fields send a temporary timer to the same hardware surface.</li>
+                    </ul>
+                  </div>
+                  <figure class="research-visual locallink-visual locallink-app-visual">
+                    <div class="locallink-app-gallery" data-locallink-app-gallery>
+                      <div class="locallink-app-gallery-viewport">
+                        <div class="locallink-app-gallery-track">
+                          <div class="locallink-app-shot" data-locallink-app-shot data-title="LIGHTBOARD" role="group" aria-roledescription="slide" aria-label="1 of 4: Lightboard">
+                            <picture>
+                              <source media="(prefers-color-scheme: dark)" srcset="assets/LocalLink/LocalLink-WS2812_Dark.png">
+                              <img src="assets/LocalLink/LocalLink-WS2812_Light.png" alt="LocalLink Lightboard view with a live 32 by 8 LED preview, display content controls, and countdown timer." loading="lazy" decoding="async">
+                            </picture>
+                          </div>
+                          <div class="locallink-app-shot" data-locallink-app-shot data-title="WEATHER" role="group" aria-roledescription="slide" aria-label="2 of 4: Weather">
+                            <picture>
+                              <source media="(prefers-color-scheme: dark)" srcset="assets/LocalLink/LocalLink-Weather_Dark.png">
+                              <img src="assets/LocalLink/LocalLink-Weather_Light.png" alt="LocalLink Weather view with Burlington conditions, a ten-day forecast, and an hourly temperature chart." loading="lazy" decoding="async">
+                            </picture>
+                          </div>
+                          <div class="locallink-app-shot" data-locallink-app-shot data-title="CALENDAR" role="group" aria-roledescription="slide" aria-label="3 of 4: Calendar">
+                            <picture>
+                              <source media="(prefers-color-scheme: dark)" srcset="assets/LocalLink/LocalLink-Calendar_Dark.png">
+                              <img src="assets/LocalLink/LocalLink-Calendar_Light.png" alt="LocalLink Calendar view with month navigation, dated notes, and the current day highlighted." loading="lazy" decoding="async">
+                            </picture>
+                          </div>
+                          <div class="locallink-app-shot" data-locallink-app-shot data-title="SETTINGS" role="group" aria-roledescription="slide" aria-label="4 of 4: Settings">
+                            <picture>
+                              <source media="(prefers-color-scheme: dark)" srcset="assets/LocalLink/LocalLink-Settings_Dark.png">
+                              <img src="assets/LocalLink/LocalLink-Settings_Light.png" alt="LocalLink Settings view for weather, theme, ESP light-sensor thresholds, units, startup, and calendar imports." loading="lazy" decoding="async">
+                            </picture>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="locallink-app-gallery-progress" data-locallink-app-gallery-progress aria-label="Choose a LocalLink screenshot">
+                        <button class="active" data-locallink-app-gallery-target="0" type="button" aria-label="Show Lightboard screenshot" aria-current="true"><span></span></button>
+                        <button data-locallink-app-gallery-target="1" type="button" aria-label="Show Weather screenshot"><span></span></button>
+                        <button data-locallink-app-gallery-target="2" type="button" aria-label="Show Calendar screenshot"><span></span></button>
+                        <button data-locallink-app-gallery-target="3" type="button" aria-label="Show Settings screenshot"><span></span></button>
+                      </div>
+                    </div>
+                  </figure>
+                </article>
+
+                <article class="research-subpage has-visual locallink-subpage" data-locallink-subpage aria-label="Page 3: Ambient display">
+                  <div class="research-subpage-copy">
+                    <p class="page-kicker">AMBIENT DISPLAY</p>
+                    <ul class="thermal-points">
+                      <li>Four 8 × 8 WS2812 panels form a 32 × 8 display for clock, weather, and countdown views.</li>
+                      <li>A TSL2591 sensor filters ambient-light readings and eases the LEDs toward a comfortable brightness.</li>
+                      <li>The clock follows a twelve-month color palette, carrying the calendar’s visual rhythm into a physical object.</li>
+                    </ul>
+                  </div>
+                  <figure class="research-visual locallink-visual locallink-hardware-visual" aria-label="Live dot-matrix clock representation with LocalLink hardware specifications.">
+                    <div class="locallink-hardware-stage">
+                      <div class="locallink-device-shell">
+                        <div class="locallink-led-grid" data-locallink-matrix aria-hidden="true"></div>
+                      </div>
+                    </div>
+                  </figure>
+                </article>
+
+                <article class="research-subpage has-visual locallink-subpage" data-locallink-subpage aria-label="Page 4: Live calendar">
+                  <div class="research-subpage-copy">
+                    <p class="page-kicker">LIVE CALENDAR</p>
+                    <ul class="thermal-points">
+                      <li>The companion Wallpaper Engine calendar established the twelve-color month palette later carried into the lightboard.</li>
+                      <li>The embedded month view retains month switching, adjacent-date context, date selection, and today highlighting.</li>
+                      <li>This public version is self-contained and never loads or exposes the original Memo data.</li>
+                    </ul>
+                  </div>
+                  <figure class="research-visual locallink-visual locallink-calendar-visual" aria-labelledby="locallink-calendar-caption">
+                    <figcaption class="visually-hidden" id="locallink-calendar-caption">Interactive Calendar demo with month selection, adjacent-date context, and a six-week date grid.</figcaption>
+                    <div class="locallink-live-calendar" data-locallink-calendar>
+                      <aside class="locallink-calendar-rail">
+                        <span class="visually-hidden" data-locallink-calendar-month-name>Month</span>
+                        <div class="locallink-calendar-date-readout">
+                          <strong data-locallink-calendar-day></strong>
+                          <span data-locallink-calendar-weekday></span>
+                        </div>
+                        <p class="locallink-calendar-location" data-locallink-calendar-location aria-live="polite">Locating...</p>
+                      </aside>
+
+                      <div class="locallink-calendar-surface">
+                        <header class="locallink-calendar-header">
+                          <span class="visually-hidden" data-locallink-calendar-title>Month</span>
+                          <button data-locallink-calendar-today type="button" aria-label="Return to today">
+                            <strong data-locallink-calendar-year>----</strong>
+                          </button>
+                        </header>
+                        <nav class="locallink-calendar-months" aria-label="Choose a month" role="tablist">
+                          <button data-locallink-calendar-month="0" type="button" role="tab" aria-controls="locallink-calendar-table">Jan</button>
+                          <button data-locallink-calendar-month="1" type="button" role="tab" aria-controls="locallink-calendar-table">Feb</button>
+                          <button data-locallink-calendar-month="2" type="button" role="tab" aria-controls="locallink-calendar-table">Mar</button>
+                          <button data-locallink-calendar-month="3" type="button" role="tab" aria-controls="locallink-calendar-table">Apr</button>
+                          <button data-locallink-calendar-month="4" type="button" role="tab" aria-controls="locallink-calendar-table">May</button>
+                          <button data-locallink-calendar-month="5" type="button" role="tab" aria-controls="locallink-calendar-table">Jun</button>
+                          <button data-locallink-calendar-month="6" type="button" role="tab" aria-controls="locallink-calendar-table">Jul</button>
+                          <button data-locallink-calendar-month="7" type="button" role="tab" aria-controls="locallink-calendar-table">Aug</button>
+                          <button data-locallink-calendar-month="8" type="button" role="tab" aria-controls="locallink-calendar-table">Sep</button>
+                          <button data-locallink-calendar-month="9" type="button" role="tab" aria-controls="locallink-calendar-table">Oct</button>
+                          <button data-locallink-calendar-month="10" type="button" role="tab" aria-controls="locallink-calendar-table">Nov</button>
+                          <button data-locallink-calendar-month="11" type="button" role="tab" aria-controls="locallink-calendar-table">Dec</button>
+                        </nav>
+                        <table class="locallink-calendar-table" id="locallink-calendar-table">
+                          <caption class="visually-hidden" data-locallink-calendar-table-caption>Calendar dates</caption>
+                          <thead>
+                            <tr><th scope="col">Mon</th><th scope="col">Tue</th><th scope="col">Wed</th><th scope="col"><abbr title="Thursday">Thr</abbr></th><th scope="col">Fri</th><th scope="col">Sat</th><th scope="col">Sun</th></tr>
+                          </thead>
+                          <tbody class="locallink-calendar-grid" data-locallink-calendar-grid></tbody>
+                        </table>
+                        <p class="visually-hidden" data-locallink-calendar-status role="status" aria-live="polite"></p>
+                      </div>
+                    </div>
+                  </figure>
+                </article>
+              </div>
+
+              <nav class="research-page-ruler locallink-page-ruler" aria-label="LocalLink page navigation">
+                <button class="active" data-locallink-page-target="0" type="button" aria-label="Go to LocalLink system architecture" aria-current="page"></button>
+                <button data-locallink-page-target="1" type="button" aria-label="Go to LocalLink control app"></button>
+                <button data-locallink-page-target="2" type="button" aria-label="Go to LocalLink ambient display"></button>
+                <button data-locallink-page-target="3" type="button" aria-label="Go to LocalLink live calendar"></button>
+              </nav>
+            </div>
+          </section>
+
+          <section class="research-showcase page-section" id="lab-model-making" aria-labelledby="lab-model-making-title" aria-hidden="true" inert>
+            <div class="research-showcase-layout model-making-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">MODEL MAKING / 02</p>
+                <h2 id="lab-model-making-title">Mechanical systems, rebuilt at one-sixth scale.</h2>
+              </header>
+              <div class="research-showcase-content model-making-content">
+                <div class="research-showcase-copy model-making-copy">
+                  <p class="page-kicker" data-model-making-kicker>AKM / INTERACTIVE ASSEMBLY</p>
+                  <ul class="thermal-points model-making-points">
+                    <li>1:6 scale display model.</li>
+                    <li>Movable modular parts.</li>
+                    <li>Ready for resin printing.</li>
+                  </ul>
+                  <div class="model-making-models" aria-label="Choose a model">
+                    <button class="active" data-model-key="akm" type="button" aria-pressed="true">AKM</button>
+                    <button data-model-key="ar15" type="button" aria-pressed="false">AR-15</button>
+                    <button data-model-key="m24" type="button" aria-pressed="false">M24</button>
+                  </div>
+                </div>
+
+                <figure class="research-visual model-making-visual" data-model-making-viewer aria-label="Interactive 3D scale-model assembly. Drag to rotate and use the slider to separate every retained component.">
+                  <div class="model-making-stage">
+                    <canvas class="model-making-canvas" data-model-making-canvas aria-label="Interactive 3D scale model. Drag to rotate."></canvas>
+                    <div class="model-making-status visually-hidden" data-model-making-status role="status" aria-live="polite"></div>
+                  </div>
+
+                  <label class="model-making-disassembly" for="model-disassembly">
+                    <span>DISASSEMBLY</span>
+                    <input id="model-disassembly" data-model-explode type="range" min="0" max="100" step="1" value="0" aria-label="Disassembly amount">
+                    <output data-model-explode-output for="model-disassembly">0%</output>
+                  </label>
+                </figure>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section class="content-view" id="music" data-view="music" aria-label="Music" aria-hidden="true" inert>
+          <div class="music-mixer" data-music-mixer>
+            <div class="music-mixer-layout">
+              <div class="music-mixer-content">
+                <div class="music-mixer-pages">
+                  <section class="music-copy-page page-section active" id="music-overview" aria-labelledby="music-overview-title">
+                    <header class="music-mixer-heading">
+                      <p class="small-label">MUSIC / NOTES</p>
+                      <h2 id="music-overview-title">Life would <span class="music-flat" aria-label="be flat">B&#9837;</span> without music.</h2>
+                    </header>
+                    <ul class="music-intro-list">
+                      <li>I play piano and guitar.</li>
+                      <li>I use <a class="music-inline-link" href="https://www.apple.com/logic-pro/" target="_blank" rel="noopener noreferrer">Logic Pro</a> to remake music, arranging and producing every instrumental part myself.</li>
+                      <li>I also write original music and shape it through arrangement, orchestration, and production.</li>
+                    </ul>
+                  </section>
+
+                  <section class="music-copy-page page-section" id="music-reworks" aria-labelledby="music-reworks-title" aria-hidden="true" inert>
+                    <header class="music-mixer-heading">
+                      <p class="small-label">REWORKS / STEM MIXER</p>
+                      <h2 id="music-reworks-title">Drumbeat and Melody</h2>
+                    </header>
+                    <div class="music-mixer-copy">
+                      <ul class="music-track-list" data-music-track-list aria-label="Reworked tracks"></ul>
+                    </div>
+                  </section>
+                </div>
+                <figure class="music-orchestra">
+                  <svg class="music-orchestra-map" data-music-orchestra viewBox="160 0 1080 800" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Orchestra instrumentation" aria-describedby="orchestra-description">
+                    <desc id="orchestra-description">Explore percussion, brass, woodwind, keyboard and string instruments arranged in a concert orchestra.</desc>
+                    <g data-orchestra-stage transform="translate(0 -60)"></g>
+                    <g class="orchestra-master-controls" transform="translate(700 615)" role="group" aria-label="All orchestra parts">
+                      <g class="orchestra-master-button is-disabled" data-music-all-on role="button" tabindex="-1" aria-label="Turn all parts on" aria-disabled="true" aria-pressed="false">
+                        <path d="M0-48A48 48 0 0 0 0 48Z"></path>
+                        <text x="-24" y="5">On</text>
+                      </g>
+                      <g class="orchestra-master-button is-disabled" data-music-all-off role="button" tabindex="-1" aria-label="Turn all parts off" aria-disabled="true" aria-pressed="false">
+                        <path d="M0-48A48 48 0 0 1 0 48Z"></path>
+                        <text x="24" y="5">Off</text>
+                      </g>
+                    </g>
+                  </svg>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-view" id="photography" data-view="photography" aria-label="Photography" aria-hidden="true" inert>
+          <section class="research-showcase page-section active" id="photography-2021" aria-labelledby="photography-2021-title">
+            <div class="research-showcase-layout photography-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">LIFE / 2021</p>
+                <h2 id="photography-2021-title">2021.</h2>
+              </header>
+              <div class="photography-gallery" aria-label="2021 photography gallery">
+                <div class="photography-contact-sheet">
+                  <a class="photography-frame" href="assets/Photography/2k/2021/06-08-2021, Father Crowly, CA.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2021/06-08-2021, Father Crowly, CA.jpg" alt="Father Crowly, California" width="2560" height="1707"><span class="photography-caption"><time datetime="2021-06-08">06.08</time><strong>Father Crowly, CA</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2021/06-08-2021, Panamint Valley, CA.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2021/06-08-2021, Panamint Valley, CA.jpg" alt="Panamint Valley, California" width="2560" height="1707"><span class="photography-caption"><time datetime="2021-06-08">06.08</time><strong>Panamint Valley, CA</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2021/06-09-2021, Grand Canyon, AZ.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2021/06-09-2021, Grand Canyon, AZ.jpg" alt="Grand Canyon, Arizona" width="2560" height="1707"><span class="photography-caption"><time datetime="2021-06-09">06.09</time><strong>Grand Canyon, AZ</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2021/09-25-2021, Mt. Washington, NH.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2021/09-25-2021, Mt. Washington, NH.jpg" alt="Mount Washington, New Hampshire" width="2560" height="1707"><span class="photography-caption"><time datetime="2021-09-25">09.25</time><strong>Mt. Washington, NH</strong></span></a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="research-showcase page-section" id="photography-2022" aria-labelledby="photography-2022-title" aria-hidden="true" inert>
+            <div class="research-showcase-layout photography-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">LIFE / 2022</p>
+                <h2 id="photography-2022-title">2022.</h2>
+              </header>
+              <div class="photography-gallery" aria-label="2022 photography gallery">
+                <div class="photography-contact-sheet">
+                  <a class="photography-frame" href="assets/Photography/2k/2022/02-19-2022, Roger Williams Park Zoo, RI.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2022/02-19-2022, Roger Williams Park Zoo, RI.jpg" alt="Roger Williams Park Zoo, Rhode Island" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2022-02-19">02.19</time><strong>Roger Williams Park Zoo, RI</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2022/03-06-2022, Independence Hall, PA.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2022/03-06-2022, Independence Hall, PA.jpg" alt="Independence Hall, Pennsylvania" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2022-03-06">03.06</time><strong>Independence Hall, PA</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2022/03-07-2022, Wall St., NY.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2022/03-07-2022, Wall St., NY.jpg" alt="Wall Street, New York" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2022-03-07">03.07</time><strong>Wall St., NY</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2022/05-20-2022, Crown Point, NY.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2022/05-20-2022, Crown Point, NY.jpg" alt="Crown Point, New York" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2022-05-20">05.20</time><strong>Crown Point, NY</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2022/07-09-2022, Washington Monument, Washington, DC.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2022/07-09-2022, Washington Monument, Washington, DC.jpg" alt="Washington Monument, Washington, DC" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2022-07-09">07.09</time><strong>Washington Monument, DC</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2022/07-10-2022, Great Falls, MD.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2022/07-10-2022, Great Falls, MD.jpg" alt="Great Falls, Maryland" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2022-07-10">07.10</time><strong>Great Falls, MD</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2022/10-08-2022, Mt. Mansfield, VT.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2022/10-08-2022, Mt. Mansfield, VT.jpg" alt="Mount Mansfield, Vermont" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2022-10-08">10.08</time><strong>Mt. Mansfield, VT</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2022/10-08-2022, Stowe, VT.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2022/10-08-2022, Stowe, VT.jpg" alt="Stowe, Vermont" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2022-10-08">10.08</time><strong>Stowe, VT</strong></span></a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="research-showcase page-section" id="photography-2023" aria-labelledby="photography-2023-title" aria-hidden="true" inert>
+            <div class="research-showcase-layout photography-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">LIFE / 2023</p>
+                <h2 id="photography-2023-title">2023.</h2>
+              </header>
+              <div class="photography-gallery" aria-label="2023 photography gallery">
+                <div class="photography-contact-sheet">
+                  <a class="photography-frame" href="assets/Photography/2k/2023/09-09-2023, Waterburry Center State Park, VT.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2023/09-09-2023, Waterburry Center State Park, VT.jpg" alt="Waterbury Center State Park, Vermont" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2023-09-09">09.09</time><strong>Waterbury Center State Park, VT</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2023/10-14-2023, Random Path, VT.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2023/10-14-2023, Random Path, VT.jpg" alt="Random Path, Vermont" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2023-10-14">10.14</time><strong>Random Path, VT</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2023/10-31-2023, Downtown Winooski, VT.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2023/10-31-2023, Downtown Winooski, VT.jpg" alt="Downtown Winooski, Vermont" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2023-10-31">10.31</time><strong>Downtown Winooski, VT</strong></span></a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="research-showcase page-section" id="photography-2024" aria-labelledby="photography-2024-title" aria-hidden="true" inert>
+            <div class="research-showcase-layout photography-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">LIFE / 2024</p>
+                <h2 id="photography-2024-title">2024.</h2>
+              </header>
+              <div class="photography-gallery" aria-label="2024 photography gallery">
+                <div class="photography-contact-sheet">
+                  <a class="photography-frame" href="assets/Photography/2k/2024/05-11-2024, South Channel Outlet Bridge, VT.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2024/05-11-2024, South Channel Outlet Bridge, VT.jpg" alt="South Channel Outlet Bridge, Vermont" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2024-05-11">05.11</time><strong>South Channel Outlet Bridge, VT</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2024/05-31-2024, North Beach, VT.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2024/05-31-2024, North Beach, VT.jpg" alt="North Beach, Vermont" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2024-05-31">05.31</time><strong>North Beach, VT</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2024/09-16-2024, Mt. Whiteface, NY.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2024/09-16-2024, Mt. Whiteface, NY.jpg" alt="Mount Whiteface, New York" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2024-09-16">09.16</time><strong>Mt. Whiteface, NY</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2024/09-22-2024, Mt. Washington 2, NH.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2024/09-22-2024, Mt. Washington 2, NH.jpg" alt="Mount Washington, New Hampshire" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2024-09-22">09.22</time><strong>Mt. Washington, NH</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2024/09-22-2024, Mt. Washington, NH.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2024/09-22-2024, Mt. Washington, NH.jpg" alt="Mount Washington, New Hampshire" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2024-09-22">09.22</time><strong>Mt. Washington, NH</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2024/09-27-2024, Shelburne Orchard 2, VT.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2024/09-27-2024, Shelburne Orchard 2, VT.jpg" alt="Shelburne Orchard, Vermont" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2024-09-27">09.27</time><strong>Shelburne Orchard, VT</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2024/09-27-2024, Shelburne Orchard, VT.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2024/09-27-2024, Shelburne Orchard, VT.jpg" alt="Shelburne Orchard, Vermont" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2024-09-27">09.27</time><strong>Shelburne Orchard, VT</strong></span></a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="research-showcase page-section" id="photography-2025" aria-labelledby="photography-2025-title" aria-hidden="true" inert>
+            <div class="research-showcase-layout photography-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">LIFE / 2025</p>
+                <h2 id="photography-2025-title">2025.</h2>
+              </header>
+              <div class="photography-gallery" aria-label="2025 photography gallery">
+                <div class="photography-contact-sheet">
+                  <a class="photography-frame" href="assets/Photography/2k/2025/02-16-2025, Centennial Court, VT.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2025/02-16-2025, Centennial Court, VT.jpg" alt="Centennial Court, Vermont" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2025-02-16">02.16</time><strong>Centennial Court, VT</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2025/03-06-2025, Multnomah Falls, OR.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2025/03-06-2025, Multnomah Falls, OR.jpg" alt="Multnomah Falls, Oregon" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2025-03-06">03.06</time><strong>Multnomah Falls, OR</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2025/03-08-2025, Mt. Rainier, WA.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2025/03-08-2025, Mt. Rainier, WA.jpg" alt="Mount Rainier, Washington" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2025-03-08">03.08</time><strong>Mt. Rainier, WA</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2025/09-20-2025, Dead Creek, VT.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2025/09-20-2025, Dead Creek, VT.jpg" alt="Dead Creek, Vermont" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2025-09-20">09.20</time><strong>Dead Creek, VT</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2025/09-20-2025, Goodies Snack Bar, VT.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2025/09-20-2025, Goodies Snack Bar, VT.jpg" alt="Goodies Snack Bar, Vermont" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2025-09-20">09.20</time><strong>Goodies Snack Bar, VT</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2025/09-20-2025, Lake Placid High School, NY.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2025/09-20-2025, Lake Placid High School, NY.jpg" alt="Lake Placid High School, New York" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2025-09-20">09.20</time><strong>Lake Placid High School, NY</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2025/09-20-2025, Lake Placid, NY.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2025/09-20-2025, Lake Placid, NY.jpg" alt="Lake Placid, New York" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2025-09-20">09.20</time><strong>Lake Placid, NY</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2025/09-20-2025, Mirror Lake, NY.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2025/09-20-2025, Mirror Lake, NY.jpg" alt="Mirror Lake, New York" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2025-09-20">09.20</time><strong>Mirror Lake, NY</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2025/10-04-2025, Flume Gorge 2, NH.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2025/10-04-2025, Flume Gorge 2, NH.jpg" alt="Flume Gorge, New Hampshire" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2025-10-04">10.04</time><strong>Flume Gorge, NH</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2025/10-04-2025, Flume Gorge, NH.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2025/10-04-2025, Flume Gorge, NH.jpg" alt="Flume Gorge, New Hampshire" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2025-10-04">10.04</time><strong>Flume Gorge, NH</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2025/10-19-2025, Derby Line, VT.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2025/10-19-2025, Derby Line, VT.jpg" alt="Derby Line, Vermont" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2025-10-19">10.19</time><strong>Derby Line, VT</strong></span></a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="research-showcase page-section" id="photography-2026" aria-labelledby="photography-2026-title" aria-hidden="true" inert>
+            <div class="research-showcase-layout photography-layout">
+              <header class="research-showcase-heading">
+                <p class="small-label">LIFE / 2026</p>
+                <h2 id="photography-2026-title">2026.</h2>
+              </header>
+              <div class="photography-gallery" aria-label="2026 photography gallery">
+                <div class="photography-contact-sheet">
+                  <a class="photography-frame" href="assets/Photography/2k/2026/05-16-2026, Gloucester Whale Watching, MA.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2026/05-16-2026, Gloucester Whale Watching, MA.jpg" alt="Gloucester whale watching, Massachusetts" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2026-05-16">05.16</time><strong>Gloucester Whale Watching, MA</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2026/06-19-2026, Dufferin Terrace, QC.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2026/06-19-2026, Dufferin Terrace, QC.jpg" alt="Dufferin Terrace, Québec" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2026-06-19">06.19</time><strong>Dufferin Terrace, QC</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2026/06-19-2026, Fairmont Le Château Frontenac, QC.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2026/06-19-2026, Fairmont Le Château Frontenac, QC.jpg" alt="Fairmont Le Château Frontenac, Québec" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2026-06-19">06.19</time><strong>Château Frontenac, QC</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2026/06-19-2026, Montmorency Falls, QC.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2026/06-19-2026, Montmorency Falls, QC.jpg" alt="Montmorency Falls, Québec" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2026-06-19">06.19</time><strong>Montmorency Falls, QC</strong></span></a>
+                  <a class="photography-frame" href="assets/Photography/2k/2026/06-19-2026, Québec City, QC.jpg" target="_blank" rel="noopener"><img src="assets/Photography/2k/2026/06-19-2026, Québec City, QC.jpg" alt="Québec City, Québec" loading="lazy" decoding="async" width="2560" height="1707"><span class="photography-caption"><time datetime="2026-06-19">06.19</time><strong>Québec City, QC</strong></span></a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+        </div>
       </div>
     </section>
   </main>
-
-  <footer class="home-footer wrap">
-    <p>MADE WITH CURIOSITY <span>♥</span> <span id="year">2026</span></p>
-    <p>Take your time. There is no wrong door.</p>
-  </footer>
 </body>
 </html>
