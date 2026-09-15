@@ -7087,6 +7087,25 @@
         else window.requestAnimationFrame(() => setCloneRect(clone, focusTargetRect()));
       };
 
+      const concealPhotoFocusForLeave = () => {
+        if (!focusedFrame && !focusClone) return;
+        if (focusCleanupTimer) window.clearTimeout(focusCleanupTimer);
+        focusCleanupTimer = 0;
+        sheet.classList.add("is-photo-focused");
+        gallery.classList.remove("is-photo-focused");
+        if (focusedFrame) {
+          focusedFrame.classList.remove("is-focus-source");
+          focusedFrame.setAttribute("aria-expanded", "false");
+        }
+        focusClosing = true;
+        if (!focusClone || reduceMotion) {
+          finishPhotoFocus();
+          return;
+        }
+        focusClone.classList.add("is-leaving");
+        focusCleanupTimer = window.setTimeout(() => finishPhotoFocus(), 280);
+      };
+
       const resetScroll = () => {
         if (scrollAnimationFrame) window.cancelAnimationFrame(scrollAnimationFrame);
         scrollAnimationFrame = 0;
@@ -7177,8 +7196,15 @@
 
       return {
         gallery,
+        leave: concealPhotoFocusForLeave,
         reset: () => {
           closePhotoFocus(false);
+          sheet.classList.remove("is-photo-focused");
+          gallery.classList.remove("is-photo-focused");
+          frames.forEach((frame) => {
+            frame.classList.remove("is-focus-source");
+            frame.setAttribute("aria-expanded", "false");
+          });
           if (contentPanel) contentPanel.scrollTop = 0;
           resetScroll();
           scheduleLayout();
@@ -7186,14 +7212,35 @@
       };
     }).filter(Boolean);
 
-    const refreshIncomingGallery = (event) => {
-      const incoming = event.detail?.incoming;
+    const resetOutgoingGallery = (event) => {
+      const outgoing = event.detail?.outgoing;
       galleryStates.forEach((state) => {
-        if (incoming?.contains(state.gallery)) state.reset();
+        if (outgoing?.contains(state.gallery)) state.leave();
       });
     };
+    const refreshIncomingGallery = (event) => {
+      const incoming = event.detail?.incoming;
+      const outgoing = event.detail?.outgoing;
+      galleryStates.forEach((state) => {
+        if (incoming?.contains(state.gallery) || outgoing?.contains(state.gallery)) state.reset();
+      });
+    };
+    document.addEventListener("viewleaving", resetOutgoingGallery);
+    document.addEventListener("sectionleaving", resetOutgoingGallery);
     document.addEventListener("viewentered", refreshIncomingGallery);
     document.addEventListener("sectionentered", refreshIncomingGallery);
+  };
+
+  const initMiddleMouseGuard = () => {
+    const blockMiddleMouse = (event) => {
+      if (event.button !== 1 || !(event.target instanceof Element)) return;
+      if (!event.target.closest(".portfolio, .photography-focus-clone")) return;
+      event.preventDefault();
+      event.stopPropagation();
+    };
+    ["pointerdown", "mousedown", "mouseup", "auxclick"].forEach((type) => {
+      document.addEventListener(type, blockMiddleMouse, { capture: true });
+    });
   };
 
   const initPublicationsPager = () => {
@@ -9400,6 +9447,7 @@
     switching = true;
     const outgoing = views.find((view) => view.dataset.view === activeName);
     const incoming = views.find((view) => view.dataset.view === name);
+    document.dispatchEvent(new CustomEvent("viewleaving", { detail: { outgoing, incoming } }));
     const outgoingNav = pageNavs.find((nav) => nav.dataset.pageNav === activeName);
     const incomingNav = pageNavs.find((nav) => nav.dataset.pageNav === name);
     const requestedSectionId = window.location.hash.slice(1);
@@ -9481,6 +9529,7 @@
       if (target === outgoing || switching || sectionSwitching) return;
 
       sectionSwitching = true;
+      document.dispatchEvent(new CustomEvent("sectionleaving", { detail: { outgoing, incoming: target } }));
       setActivePageLink(nav, link);
       window.history.replaceState({ view: nav.dataset.pageNav }, "", link.hash);
       const photographySwitch = view?.dataset.view === "photography"
@@ -9573,6 +9622,7 @@
   initLocalLinkSystemMap();
   initLocalLinkCalendar();
   initLocalLinkMatrix();
+  initMiddleMouseGuard();
   initPhotographyGalleries();
   initPublicationsPager();
   initAcousticPager();
